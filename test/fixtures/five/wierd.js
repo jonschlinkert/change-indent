@@ -1,5 +1,3 @@
-var util = require('util');
-var Options = require('options-cache');
 
 function App(options) {
      Options.call(this, options);

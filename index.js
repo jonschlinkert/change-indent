@@ -8,9 +8,7 @@
 
 'use strict';
 
-var detect = require('detect-indent');
-var sum = require('array-sum');
-var gcd = require('gcd');
+var detect = require('./temp');
 
 module.exports = function(str, n) {
   var re = /^([\u0020\t]*)/;
@@ -22,13 +20,8 @@ module.exports = function(str, n) {
 
   return str.split(/\n/g).map(function(line, i) {
     var len = line.match(re)[0].length;
-
-    if (len % 2 === 1) {
-      len += 1;
-    }
-
     var text = line.replace(/^\s+/, '');
-    var num = Math.ceil((len / amount) * (n || 2));
+    var num = Math.round((len / amount) * n);
 
     var lead;
     if (len === 0) {

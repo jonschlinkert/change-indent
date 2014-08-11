@@ -61,13 +61,15 @@ describe('change indent: spaces', function () {
 
 
   it('should change markdown indentation from 5 to 2', function () {
-    var fixture = helper.readFixture('five/code-block.md');
+    var fixture = helper.readFixture('five/wierd.js');
     var before = detect.stats(fixture);
-    before.amount.should.equal(2);
 
-    var actual = change(fixture, 6);
-    helper.writeActual('five/code-block', actual);
+    // This is correct. Indentation should never be 5. Just saying.
+    before.amount.should.equal(6);
+
+    var actual = change(fixture, 2);
+    helper.writeActual('five/wierd.js', actual);
     var after = detect.stats(actual);
-    after.amount.should.equal(6);
+    after.amount.should.equal(2);
   });
 });
